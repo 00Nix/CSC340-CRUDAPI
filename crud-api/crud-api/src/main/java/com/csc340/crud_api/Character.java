@@ -1,9 +1,11 @@
-package com.example.demo;
+package com.csc340.crud_api;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "characters")
@@ -12,34 +14,29 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long characterId;
     
-    @NotBlank
     @Column(nullable = false)
     private String name;
 
-    @NotBlank
     @Column(nullable = false, length = 1000)
     private String description;
 
-    @NotBlank
     @Column(nullable = false)
     private String universe;
 
-    @NotBlank
     @Column(nullable = false)
     private String power;
 
-    @NotBlank
     @Column(nullable = false)
     private String species;
 
-    @NotBlank
     @Column(nullable = false)
     private String role;
 
     public Character() {
     }
 
-    public Character(Long characterId,String name, String description, String universe, String power, String species, String role) {
+    public Character(Long characterId, String name, String description, String universe, String power, String species, String role) {
+        this.characterId = characterId;
         this.name = name;
         this.description = description;
         this.universe = universe;

@@ -1,88 +1,93 @@
-package com.example.demo;
+package com.csc340.crud_api;
 
-import java.util.Collection;
 import java.util.List;
-
-import com.example.demo.entity.Character;
-import com.example.demo.service.CharacterService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/characters")
 public class CharacterApiController {
+    
     private final CharacterService characterService;
 
     public CharacterApiController(CharacterService characterService) {
         this.characterService = characterService;
     }
+    //get all characters
     @GetMapping
     public ResponseEntity<List<Character>> getAllCharacters() {
         List<Character> characters = characterService.getAllCharacters();
+        return ResponseEntity.ok(characters);
     }
+    //get character by id
     @GetMapping("/{id}")
     public ResponseEntity<Character> getCharacterById(@PathVariable Long id) {
-        try {
-            return ResponseEntity.ok(characterService.getCharacterById(id));
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+       
+        Character character = characterService.getCharacterById(id);
+        if (character != null) {
+            return ResponseEntity.ok(character);
+        } else {
+            return ResponseEntity.notFound().build();
         }
 }
     //add a new character
     @PostMapping
-    public ResponseEntity<Character> addCharacter(@valid @RequestBody Character character) {
+    public ResponseEntity<Character> addCharacter(@RequestBody Character character) {
         Character savedCharacter = characterService.createCharacter(character);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCharacter);
     }
     //update a character
     @PutMapping("/{id}")
-    public ResponseEntity<Character> updateCharacter(@PathVariable Long id, @valid @RequestBody Character characterDetails) {
-        try {
+    public ResponseEntity<Character> updateCharacter(@PathVariable Long id, @RequestBody Character characterDetails) {
             Character updatedCharacter = characterService.updateCharacter(id, characterDetails);
-            return ResponseEntity.ok(updatedCharacter);
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+            if (updatedCharacter != null) {
+                return ResponseEntity.ok(updatedCharacter);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
     }
     //delete a character
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCharacter(@PathVariable Long id) {
-        try {
-            characterService.deleteCharacter(id);
-            return ResponseEntity.noContent().build();
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+        characterService.deleteCharacter(id);
+        return ResponseEntity.noContent().build();
     }
+
     //search characters by name
     @GetMapping("/search")
     public ResponseEntity<List<Character>> searchCharactersByName(@RequestParam String name) {
-        List<Character> characters = characterService.getCharactersByName(name);
-        return ResponseEntity.ok(characters);
+        return ResponseEntity.ok(characterService.getCharactersByName(name));
     }
+
     //search characters by universe
     @GetMapping("/search/universe")
     public ResponseEntity<List<Character>> searchCharactersByUniverse(@RequestParam String universe) {
-        List<Character> characters = characterService.getCharactersByUniverse(universe);
-        return ResponseEntity.ok(characters);
+        return ResponseEntity.ok(characterService.getCharactersByUniverse(universe));
     }
+
     //search characters by power
     @GetMapping("/search/power")
     public ResponseEntity<List<Character>> searchCharactersByPower(@RequestParam String power) {
-        List<Character> characters = characterService.getCharactersByPower(power);
-        return ResponseEntity.ok(characters);
+        return ResponseEntity.ok(characterService.getCharactersByPower(power));
     }
     //search characters by species
     @GetMapping("/search/species")
     public ResponseEntity<List<Character>> searchCharactersBySpecies(@RequestParam String species) {
-        List<Character> characters = characterService.getCharactersBySpecies(species);
-        return ResponseEntity.ok(characters);
+        return ResponseEntity.ok(characterService.getCharactersBySpecies(species));
     }
+
     //search characters by role
     @GetMapping("/search/role")
     public ResponseEntity<List<Character>> searchCharactersByRole(@RequestParam String role) {
-        List<Character> characters = characterService.getCharactersByRole(role);
-        return ResponseEntity.ok(characters);
+        return ResponseEntity.ok(characterService.getCharactersByRole(role));
     }
 }

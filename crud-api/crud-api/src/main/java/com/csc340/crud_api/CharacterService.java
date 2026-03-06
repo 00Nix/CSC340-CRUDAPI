@@ -1,12 +1,11 @@
-package com.example.demo;
+package com.csc340.crud_api;
+
 import java.util.List;
-import com.csc340.crud_api.entity.Character;
-import com.csc340.crud_api.repository.CharacterRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CharacterService {
-    private class CharacterRepository characterRepository;
+    private final CharacterRepository characterRepository;
 
     public CharacterService(CharacterRepository characterRepository) {
         this.characterRepository = characterRepository;
@@ -16,25 +15,26 @@ public class CharacterService {
     }
     public Character getCharacterById(Long id) {
         return characterRepository.findById(id).orElse(null);
-        .orElseThrow(() -> new ResourceNotFoundException("Character not found with id: " + id));
     }
+
     public Character createCharacter(Character character) {
         return characterRepository.save(character);
     }
-    public Character updateCharacter(Long id, Character characterDetails) {
-        Character existingCharacter = getCharacterById(id);
-        existingCharacter.setName(characterDetails.getName());
-        existingCharacter.setDescription(characterDetails.getDescription());
-        existingCharacter.setUniverse(characterDetails.getUniverse());
-        existingCharacter.setPower(characterDetails.getPower());
-        existingCharacter.setSpecies(characterDetails.getSpecies());
-        existingCharacter.setRole(characterDetails.getRole());
-        return characterRepository.save(existingCharacter);
+     public Character updateCharacter(Long id, Character updatedCharacter) {
+        return characterRepository.findById(id).map(existingCharacter -> {
+            existingCharacter.setName(updatedCharacter.getName());
+            existingCharacter.setDescription(updatedCharacter.getDescription());
+            existingCharacter.setUniverse(updatedCharacter.getUniverse());
+            existingCharacter.setPower(updatedCharacter.getPower());
+            existingCharacter.setSpecies(updatedCharacter.getSpecies());
+            existingCharacter.setRole(updatedCharacter.getRole());
+            return characterRepository.save(existingCharacter);
+        }
+        ).orElse(null);
     }
     public void deleteCharacter(Long id) {
-        Character existingCharacter = getCharacterById(id);
-        characterRepository.delete(existingCharacter);
-    }
+        characterRepository.deleteById(id);
+    }    
     public List<Character> getCharactersByName(String name) {
         return characterRepository.findByNameContainingIgnoreCase(name);
     }
@@ -50,3 +50,4 @@ public class CharacterService {
     public List<Character> getCharactersByRole(String role) {
         return characterRepository.findByRoleContainingIgnoreCase(role);
     }
+}

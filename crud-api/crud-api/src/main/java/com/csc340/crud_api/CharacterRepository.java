@@ -1,8 +1,7 @@
-package com.example.demo;
+package com.csc340.crud_api;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.csc340.crud_api.entity.Character;
 
 public interface CharacterRepository extends JpaRepository<Character, Long> {
     List<Character> findByNameContainingIgnoreCase(String name);
