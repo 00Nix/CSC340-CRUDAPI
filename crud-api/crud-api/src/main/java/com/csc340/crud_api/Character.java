@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "characters")
@@ -14,22 +13,11 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long characterId;
     
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false, length = 1000)
     private String description;
-
-    @Column(nullable = false)
     private String universe;
-
-    @Column(nullable = false)
     private String power;
-
-    @Column(nullable = false)
     private String species;
-
-    @Column(nullable = false)
     private String role;
 
     public Character() {

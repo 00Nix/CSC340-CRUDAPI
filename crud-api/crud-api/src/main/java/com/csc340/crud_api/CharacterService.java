@@ -50,4 +50,5 @@ public class CharacterService {
     public List<Character> getCharactersByRole(String role) {
         return characterRepository.findByRoleContainingIgnoreCase(role);
     }
+    
 }
