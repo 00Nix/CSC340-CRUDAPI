@@ -93,7 +93,7 @@ public class CharacterApiController {
     }
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Character>> getCharactersByCategory(@PathVariable String category) {
-    List<Character> characters = characterService.getCharactersBySpecies(category);
+    List<Character> characters = characterService.getCharactersByUniverse(category);
     return ResponseEntity.ok(characters);
     }   
 }   
