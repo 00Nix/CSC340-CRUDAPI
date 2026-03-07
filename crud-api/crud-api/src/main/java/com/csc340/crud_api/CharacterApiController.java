@@ -1,8 +1,9 @@
 package com.csc340.crud_api;
 
 import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/characters")
@@ -92,7 +93,9 @@ public class CharacterApiController {
     }
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Character>> getCharactersByCategory(@PathVariable String category) {
-    List<Character> characters = characterService.getCharactersByUniverse(category);
-        return ResponseEntity.ok(characters);
+    List<Character> characters = characterService.getCharactersBySpecies(category);
+    return ResponseEntity.ok(characters);
     }   
-}
+}   
+
+
