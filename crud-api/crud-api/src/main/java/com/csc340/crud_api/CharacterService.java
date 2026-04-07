@@ -1,6 +1,7 @@
 package com.csc340.crud_api;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,6 +29,8 @@ public class CharacterService {
             existingCharacter.setPower(updatedCharacter.getPower());
             existingCharacter.setSpecies(updatedCharacter.getSpecies());
             existingCharacter.setRole(updatedCharacter.getRole());
+            existingCharacter.setFirstAppearance(updatedCharacter.getFirstAppearance());
+            existingCharacter.setPersonalityTraits(updatedCharacter.getPersonalityTraits());
             return characterRepository.save(existingCharacter);
         }
         ).orElse(null);
