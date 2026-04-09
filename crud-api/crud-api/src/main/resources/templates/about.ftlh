@@ -57,7 +57,7 @@ p {
     <a href="/characters/character-list">Home</a>
     <a href="/characters/details">Character Details</a>
     <a href="/characters/about">About</a>
-    <a href="/characters/add">Add a Character</a>/a>
+    <a href="/characters/add">Add a Character</a>
 </nav>
 
 <div class="container">
@@ -70,7 +70,7 @@ p {
         in our culture. Their backgrounds, and stories make for a perfect demonstration for a character gallery website.
     
     </p>
-    <img src="justiceleague.jpg" alt="Justice League Members" class="about-image">
+    <img src="/justiceleague.jpg" alt="Justice League Members" class="about-image">
 
 </div>
 </body>

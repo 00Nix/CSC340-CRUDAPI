@@ -110,7 +110,7 @@ nav a:hover {
 <nav>
     <a href="/characters/character-list">Home</a>
     <a href="/characters/details">Character Details</a>
-    <a href="/characters/about.">About</a>
+    <a href="/characters/about">About</a>
     <a href="/characters/add">Add a Character</a>
 </nav>
     <h1>The Justice League</h1>
@@ -119,16 +119,20 @@ nav a:hover {
         <input type="text" id="searchInput" name="name" placeholder="Search by name...">
         <button type="submit" class="btn btn-blue">Search</button>
         </form>
-        <a href="/characters/add" class="btn btn-green">+ Create New Chaarcter</a>
+        <a href="/characters/add" class="btn btn-green">+ Create New Charcter</a>
     </div>
     <div id="gallery">
         <#list characterList as character>
             <div class="card">
+                <#if character.imageUrl?has_content>
+                <img src="${character.imageUrl}"
+                alt="${character.name}">
+                </#if>
                 <h3>${character.name}</h3>
-                <p><strong>Universe:<strong> ${character.universe}</p>
+                <p><strong>Universe:</strong> ${character.universe}</p>
                 <p><strong>Role:</strong> ${character.role}</p> 
-                <p><strong>Power</strong> ${character.power}</p>
-                <p><strong>Species</strong> ${character.species}</p>   
+                <p><strong>Power:</strong> ${character.power}</p>
+                <p><strong>Species:</strong> ${character.species}</p>   
                 <a href="/characters/${character.characterId?c}" class="btn btn-blue">
                     View Details
                 </a>
@@ -137,11 +141,12 @@ nav a:hover {
                          Update
                     </a>
                 <a href="/characters/delete/${character.characterId?c}" class="btn btn-red"
-                style="margin-left: 6px;"></a>
+                style="margin-left: 6px;">
                 Delete            
+            </a>
             </div> 
-    </div>
-    </#list> 
+        </#list>
+    </div> 
 </body>
 </html>
  
