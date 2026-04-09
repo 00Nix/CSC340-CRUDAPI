@@ -19,11 +19,14 @@ public class Character {
     private String power;
     private String species;
     private String role;
+    private String firstAppearance;
+    private String personalityTraits;
+    private String imageUrl;
 
     public Character() {
     }
 
-    public Character(Long characterId, String name, String description, String universe, String power, String species, String role) {
+    public Character(Long characterId, String name, String description, String universe, String power, String species, String role, String firstAppearance, String personalityTraits) {
         this.characterId = characterId;
         this.name = name;
         this.description = description;
@@ -31,6 +34,9 @@ public class Character {
         this.power = power;
         this.species = species;
         this.role = role;
+        this.firstAppearance = firstAppearance;
+        this.personalityTraits = personalityTraits;
+        this.imageUrl = imageUrl;
     }
     public Long getCharacterId() {
         return characterId;
@@ -73,5 +79,23 @@ public class Character {
     }
     public void setRole(String role) {
         this.role = role;
+    }
+    public String getFirstAppearance() {
+        return firstAppearance;
+    }
+    public void setFirstAppearance(String firstAppearance) {
+        this.firstAppearance = firstAppearance;
+    }
+     public String getPersonalityTraits() {
+        return personalityTraits;
+    }
+    public void setPersonalityTraits(String personalityTraits) {
+        this.personalityTraits = personalityTraits;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
