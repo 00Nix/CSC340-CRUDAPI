@@ -31,6 +31,7 @@ public class CharacterService {
             existingCharacter.setRole(updatedCharacter.getRole());
             existingCharacter.setFirstAppearance(updatedCharacter.getFirstAppearance());
             existingCharacter.setPersonalityTraits(updatedCharacter.getPersonalityTraits());
+            existingCharacter.setImageUrl(updatedCharacter.getImageUrl());
             return characterRepository.save(existingCharacter);
         }
         ).orElse(null);

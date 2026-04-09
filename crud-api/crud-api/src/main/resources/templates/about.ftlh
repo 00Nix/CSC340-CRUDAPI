@@ -54,10 +54,10 @@ p {
 
 <body>
 <nav>
-    <a href="index.html">Home</a>
-    <a href="details.html">Character Details</a>
-    <a href="about.html">About</a>
-    <a href="new-character-form.html">Add a Character</a>
+    <a href="/characters/character-list">Home</a>
+    <a href="/characters/details">Character Details</a>
+    <a href="/characters/about">About</a>
+    <a href="/characters/add">Add a Character</a>/a>
 </nav>
 
 <div class="container">

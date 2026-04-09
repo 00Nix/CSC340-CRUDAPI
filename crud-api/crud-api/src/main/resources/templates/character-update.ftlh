@@ -71,14 +71,14 @@ button:hover {
 </head>
 <body>
     <nav>
-    <a href="/characters/index">Home</a>
+    <a href="/characters/character-list">Home</a>
     <a href="/characters/details">Character Details</a>
-    <a href="/characters/about.">About</a>
+    <a href="/characters/about">About</a>
     <a href="/characters/add">Add a Character</a>
     </nav>
 <div class="container">
-    <h1>Add a New Character</h1>
-    <form action="/characters/update/${character.characterId$c}" method="post">
+    <h1>${title}</h1>
+    <form action="/characters/update/${character.characterId?c}" method="post">
         <label for="name">Character Name:</label>
         <input type="text" id="name" name="name" value="${character.name}" required>
 
@@ -95,15 +95,18 @@ button:hover {
         <input type="text" id="power" name="power" value="${character.power}" required>
 
         <label for="description">Biography:</label>
-        <textarea id="text" id="description" name="description" rows="3" value="${character.description}" required></textarea>
+        <textarea id="text" id="description" name="description" rows="3" required>${character.description!""}</textarea>
+
+        <label for="imageUrl">Image Url:</label>
+        <input type="text" id="imageUrl" name="imageUrl" value="${character.imageUrl!}" required> 
 
         <label for="firstAppearance">First Appearance:</label>
         <input type="text" id="firstAppearance" name="firstAppearance" value="${character.firstAppearance}" required>
 
         <label for="personalityTraits">Personality Traits</label>
-        <textarea type="text" id="personalityTraits" name="Enter character traits" value="${character.personalityTraits}" rows="2" required></textarea>
+        <textarea type="text" id="personalityTraits" name="personalityTraits" value="${character.personalityTraits}" rows="2" required></textarea>
 
-        <button type="submit">Add Character</button>
+        <button type="submit">Update Character</button>
 
 
     </form>

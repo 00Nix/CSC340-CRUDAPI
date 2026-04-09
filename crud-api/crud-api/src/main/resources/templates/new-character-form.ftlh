@@ -71,11 +71,12 @@ button:hover {
 </style>
 </head>
 <body>
-    <a href="/characters/index">Home</a>
+<nav>
+    <a href="/characters/character-list">Home</a>
     <a href="/characters/details">Character Details</a>
-    <a href="/characters/about.">About</a>
+    <a href="/characters/about">About</a>
     <a href="/characters/add">Add a Character</a>
-
+</nav>
 <div class="container">
     <h1>Add a new Character</h1>
     <form action="/characters/save" method="post">
@@ -83,7 +84,7 @@ button:hover {
         <input type="text" id="name" name="name" placeholder="Enter character name" required>
 
         <label for="universe">Universe:</label>
-        <input type="text" id="universe" name="universe": placeholder="Enter universe (e.g., DC, Marvel)" required>
+        <input type="text" id="universe" name="universe" placeholder="Enter universe (e.g., DC, Marvel)" required>
 
         <label for="role">Role:</label>
         <input type="text" id="role" name="role" placeholder="Enter character role" required>
@@ -95,13 +96,16 @@ button:hover {
         <input type="text" id="power" name="power" placeholder="Enter character power" required>
 
         <label for="description">Biography:</label>
-        <textarea id="text" id="description" name="description" rows="3" placeholder="Enter character description" required></textarea>
+        <textarea type="text" id="description" name="description" rows="3" placeholder="Enter character description" required></textarea>
 
-        <label for="firstAppearance">First Appearance:</label>
+        <label for="imageUrl">Image Url:</label>
+        <input type="text" id="imageUrl" name="imageUrl" placeholder="Paste an image URL" required></textarea>
+
+        <laeb for="firstAppearance">First Appearance:</label>
         <input type="text" id="firstAppearance" name="firstAppearance" placeholder="Enter characters first appearance" required>
 
         <label for="personalityTraits">Personality Traits</label>
-        <textarea type="text" id="personalityTraits" name="Enter character traits" rows="2" placeholder="Enter character description" required></textarea>
+        <textarea type="text" id="personalityTraits" name="personalityTraits" rows="2" placeholder="Enter character description" required></textarea>
 
         <button type="submit">Add Character</button>
     </form>

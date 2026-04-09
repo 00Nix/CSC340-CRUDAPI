@@ -21,6 +21,7 @@ public class Character {
     private String role;
     private String firstAppearance;
     private String personalityTraits;
+    private String imageUrl;
 
     public Character() {
     }
@@ -35,6 +36,7 @@ public class Character {
         this.role = role;
         this.firstAppearance = firstAppearance;
         this.personalityTraits = personalityTraits;
+        this.imageUrl = imageUrl;
     }
     public Long getCharacterId() {
         return characterId;
@@ -89,5 +91,11 @@ public class Character {
     }
     public void setPersonalityTraits(String personalityTraits) {
         this.personalityTraits = personalityTraits;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
